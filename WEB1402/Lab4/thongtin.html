@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2 - Lab 4</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: aliceblue;
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .card {
+            width: 400px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .card-header {
+            width: 100%;
+            border-radius: 5px 5px 0 0;
+            background-color: #ff9900;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .card-header h3 {
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .error {
+            text-align: center;
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+        select#hocLuc {
+            height: 40px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #ff9900;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff8800;
+        }
+
+        .btn-secondary {
+            background-color: rgb(47, 173, 75);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgb(45, 156, 69);
+        }
+
+        .calc .btn {
+            margin-top: 20px;
+        }
+
+        #result {
+            margin: 5px;
+        }
+
+        #result p {
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        #result p:last-child {
+            margin-bottom: 0;
+        }
+
+        #result p i {
+            color: #ff9900;
+        }
+
+        #result p span {
+            font-weight: bold;
+            color: #ff9900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="title">Thông tin sinh viên</h3>
+            </div>
+            <div class="card-body">
+                <div id="result">
+                    <p><i class="fas fa-list-numeric"></i> Mã số sinh viên: PD05994</p>
+                    <p><i class="fas fa-user-alt"></i> Họ và tên: Ngô Quốc Đạt</p>
+                    <p><i class="fas fa-chart-line"></i> Điểm trung bình: 10</p>
+                    <p><i class="fas fa-award"></i> Học lực: Xuất sắc</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

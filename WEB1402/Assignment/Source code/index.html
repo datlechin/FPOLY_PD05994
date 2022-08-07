@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="myApp" ng-controller="MainController">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ Page.title() }}</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="topbar">
+            <div class="container">
+                <div class="icons">
+                    <a href="#" style="color: rgb(0, 132, 255);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: rgb(0, 183, 255);"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: rgb(255, 0, 0);"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" style="color: rgb(255, 81, 0);"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="login">
+                    <a href="#!login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a href="#!register"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <a href="#/!"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png"
+                            alt="Logo"></a>
+                    <li><a href="#/!" ng-class="{ active: isActive('/') }"><i class="fas fa-home"></i> Trang chủ</a>
+                    </li>
+                    <li><a href="#!math" ng-class="{ active: isActive('/math') }"><i class="fas fa-calculator"></i> Giải
+                            toán</a></li>
+                    <li><a href="#!cart" ng-class="{ active: isActive('/cart') }"><i class="fas fa-cart-shopping"></i>
+                            Giỏ hàng</a></li>
+                    <li><a href="#!general" ng-class="{ active: isActive('/general') }"><i class="fas fa-book"></i> Tổng
+                            hợp</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main style="margin-bottom: 20vh;">
+        <ng-view />
+    </main>
+    <footer>
+        <p>Thiết kế &copy; 2022 bởi <a style="color: white;"
+                href="https://www.facebook.com/profile.php?id=100009280109890">Ngô
+                Quốc Đạt</a></p>
+        <p style="margin-top: 5px;">Email: <a style="color: white;"
+                href="mailto:datnqpd05994@fpt.edu.vn">datnqpd05994@fpt.edu.vn</a>
+        </p>
+        <p style="margin-top: 30px;"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png" alt=""></p>
+    </footer>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/angularjs/angular.min.js"></script>
+    <script src="./js/angularjs/angular-route.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

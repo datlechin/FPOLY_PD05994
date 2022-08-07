@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3 - Lab 3</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator {
+            background-color: aliceblue;
+            position: relative;
+            height: auto;
+            width: auto;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            border-radius: 10px;
+        }
+
+        button {
+            height: 60px;
+            width: 60px;
+            border: 0;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 50%;
+            background-color: antiquewhite;
+            font-size: 18px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        button.btn-operator {
+            background-color: rgb(255, 153, 0);
+            color: white;
+        }
+        
+        .calculator #display {
+            margin: 0 10px;
+            height: 150px;
+            width: auto;
+            max-width: 270px;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 30px;
+            margin-bottom: 20px;
+            overflow: scroll;
+        }
+
+        .calculator #display::-webkit-scrollbar {
+            display: block;
+            height: 3px;
+        }
+
+        #display {
+            color: black;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div id="display"></div>
+            <table>
+                <tr>
+                    <td><button class="btn-number" id="7">7</button></td>
+                    <td><button class="btn-number" id="8">8</button></td>
+                    <td><button class="btn-number" id="9">9</button></td>
+                    <td><button class="btn-operator" id="/">÷</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn-number" id="4">4</button></td>
+                    <td><button class="btn-number" id="5">5</button></td>
+                    <td><button class="btn-number" id="6">6</button></td>
+                    <td><button class="btn-operator" id="*">x</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn-number" id="1">1</button></td>
+                    <td><button class="btn-number" id="2">2</button></td>
+                    <td><button class="btn-number" id="3">3</button></td>
+                    <td><button class="btn-operator" id="-">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn-number" id="0">0</button></td>
+                    <td><button class="btn-operator" id="clear">C</button></td>
+                    <td><button class="btn-operator" id="=">=</button></td>
+                    <td><button class="btn-operator" id="+">+</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        const buttons = document.querySelectorAll('button');
+
+        buttons.forEach(button => {
+            button.onclick = () => {
+                if (button.id == 'clear') {
+                    display.innerText = '';
+                } else if (button.id == '=') {
+                    display.innerText = eval(display.innerText);
+                } else {
+                    display.innerText += button.id;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

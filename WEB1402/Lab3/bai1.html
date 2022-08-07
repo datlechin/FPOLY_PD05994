@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1 - Lab 3</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            background-color: aliceblue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 500px;
+            height: auto;
+            background-color: white;
+            margin-top: 25px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .card-header {
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 13px 0;
+            background-color: rgb(255, 153, 0);
+            color: white;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .card-body {
+            width: 455px;
+            padding: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            font-size: 15px;
+            width: 100%;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 10px;
+            margin-top: 5px;
+        }
+
+        .form-group select {
+            width: 103%;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 10px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            width: 103%;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(255, 153, 0);
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: rgb(255, 136, 0);
+        }
+
+        #result {
+            width: 96%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 5px;
+            border: 1px solid rgb(36, 156, 0);
+            padding: 15px;
+            background-color: rgba(157, 255, 0, 0.418);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Máy tính đơn giản</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="num1">Số thứ nhất</label>
+                        <input type="number" id="num1" placeholder="Nhập số thứ nhất">
+                    </div>
+                    <div class="form-group">
+                        <label for="num2">Số thứ hai</label>
+                        <input type="number" id="num2" placeholder="Nhập số thứ hai">
+                    </div>
+                    <div class="form-group">
+                        <label for="num1">Phép tính</label>
+                        <select name="operator" id="operator">
+                            <option value="add">Cộng</option>
+                            <option value="sub">Trừ</option>
+                            <option value="mul">Nhân</option>
+                            <option value="div">Chia</option>
+                        </select>
+                    </div>
+                    <div id="result"></div>
+                    <button class="btn">Tính toán</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let resultId = document.querySelector('#result');
+        resultId.style.display = 'none';
+
+        document.querySelector('.btn').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let num1 = document.querySelector('#num1').value;
+            let num2 = document.querySelector('#num2').value;
+            let operator = document.querySelector('#operator').value;
+
+            if (num1 == '' || num2 == '') {
+                alert('Vui lòng nhập số thứ nhất và số thứ hai');
+                return;
+            } else if (isNaN(num1) || isNaN(num2)) {
+                alert('Số thứ nhất và số thứ hai phải là số');
+                return;
+            }
+
+            let result = 0;
+
+            switch (operator) {
+                case 'add':
+                    result = `${num1} + ${num2} = ${parseInt(num1) + parseInt(num2)}`;
+                    break;
+                case 'sub':
+                    result = `${num1} - ${num2} = ${parseInt(num1) - parseInt(num2)}`;
+                    break;
+                case 'mul':
+                    result = `${num1} * ${num2} = ${parseInt(num1) * parseInt(num2)}`;
+                    break;
+                case 'div':
+                    result = `${num1} / ${num2} = ${parseInt(num1) / parseInt(num2)}`;
+                    break;
+            }
+
+            resultId.innerHTML = `Kết quả: ${result}`;
+            resultId.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

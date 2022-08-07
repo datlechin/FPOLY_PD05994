@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Assignment</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="topbar">
+            <div class="container">
+                <div class="icons">
+                    <a href="#" style="color: rgb(0, 132, 255);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: rgb(0, 183, 255);"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: rgb(255, 0, 0);"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" style="color: rgb(255, 81, 0);"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="login">
+                    <a href="/login.html"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a href="/register.html"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                    <a href="/cart.html"><i class="fas fa-cart-shopping"></i> Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <a href="/"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png" alt="Logo"></a>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                    <li><a href="math.html"><i class="fas fa-calculator"></i> Giải toán</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container" style="justify-content: center;">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Đăng ký</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/register.html" id="register-form">
+                        <div class="form-group">
+                            <label for="mssv">Mã sinh viên</label>
+                            <input type="text" id="mssv" class="form-control" placeholder="Nhập mã số sinh viên">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Họ tên</label>
+                            <input type="text" id="name" class="form-control" placeholder="Nhập họ tên">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Nhập địa chỉ email">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Giới tính</label>
+                            <div class="form-control">
+                                <input type="radio" name="gender" id="gender"> Nam
+                                <input type="radio" name="gender" id="gender"> Nữ
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hobbies">Sở thích</label>
+                            <div class="form-control">
+                                <input type="checkbox" name="hobbies" id="hobbies"> Đọc sách
+                                <input type="checkbox" name="hobbies" id="hobbies"> Du lịch
+                                <input type="checkbox" name="hobbies" id="hobbies"> Lập trình
+                                <input type="checkbox" name="hobbies" id="hobbies"> Âm nhạc
+                                <input type="checkbox" name="hobbies" id="hobbies"> Khác
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Quốc tịch</label>
+                            <select id="country" class="form-control">
+                                <option value="VN">Việt Nam</option>
+                                <option value="US">Mỹ</option>
+                                <option value="UK">Anh</option>
+                                <option value="JP">Nhật Bản</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Ghi chú</label>
+                            <textarea id="notes" class="form-control" placeholder="Nhập ghi chú"></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-block">Đăng ký</button>
+                    </form>
+                    <p style="text-align: center; margin-top: 15px;">
+                        Đã có tài khoản? <a href="/login.html" style="font-weight: bold;">Đăng nhập</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Thiết kế &copy; 2022 bởi <a style="color: white;"
+                href="https://www.facebook.com/profile.php?id=100009280109890">Ngô Quốc Đạt</a></p>
+        <p style="margin-top: 5px;">Email: <a style="color: white;"
+                href="mailto:datnqpd05994@fpt.edu.vn">datnqpd05994@fpt.edu.vn</a></p>
+        <p style="margin-top: 30px;"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png" alt=""></p>
+    </footer>
+    <script src="./js/register.js"></script>
+</body>
+
+</html>

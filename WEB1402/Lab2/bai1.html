@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1 - Lab 2</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="title">Nhập thông tin sinh viên</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="error"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" id="birthday">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="major" placeholder="Nhập chuyên ngành">
+                    </div>
+                    <button class="btn btn-primary">Đồng ý</button>
+                </form>
+                <div id="result">
+                    <p><i class="fas fa-user-alt"></i> Họ và tên: <span id="name-info"></span></p>
+                    <p><i class="fas fa-birthday-cake"></i> Ngày sinh: <span id="birthday-info"></span></p>
+                    <p><i class="fas fa-stopwatch-20"></i> Tuổi hiện tại: <span id="age-info"></span></p>
+                    <p><i class="fas fa-graduation-cap"></i> Chuyên ngành: <span id="major-info"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let form = document.querySelector('form');
+        let error = document.querySelector('.error');
+        let title = document.querySelector('.title');
+        let result = document.querySelector('#result');
+        let name = document.querySelector('#name');
+        let birthday = document.querySelector('#birthday');
+        let major = document.querySelector('#major');
+
+        result.style.display = 'none';
+        error.style.display = 'none';
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let student = {
+                name: name.value,
+                birthday: birthday.value,
+                major: major.value
+            }
+            let year = student.birthday.split('-')[0];
+
+            if (student.name == '') {
+                error.innerHTML = 'Vui lòng nhập họ và tên';
+                error.style.display = 'block';
+            } else if (student.birthday == '') {
+                error.innerHTML = 'Vui lòng nhập ngày sinh';
+                error.style.display = 'block';
+            } else if (year >= new Date().getFullYear()) {
+                error.innerHTML = 'Năm sinh không hợp lệ';
+                error.style.display = 'block';
+            } else if (student.major == '') {
+                error.innerHTML = 'Vui lòng nhập chuyên ngành';
+                error.style.display = 'block';
+            } else {
+                result.style.display = 'block';
+                form.style.display = 'none';
+                title.innerHTML = 'Thông tin sinh viên';
+                setInfo(student, year);
+            }
+        })
+
+        function setInfo(student, year) {
+            document.querySelector('#name-info').innerHTML = student.name;
+            document.querySelector('#birthday-info').innerHTML = student.birthday;
+            document.querySelector('#age-info').innerHTML = getAge(year);
+            document.querySelector('#major-info').innerHTML = student.major;
+        }
+        function getAge(year) {
+            let today = new Date();
+            let age = today.getFullYear() - year;
+
+            return age;
+        }
+    </script>
+</body>
+
+</html>

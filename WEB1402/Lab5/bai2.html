@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 2 - Lab 4</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: aliceblue;
+        }
+
+        .card {
+            width: 600px;
+            margin: 30px 0;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+
+        .card-header {
+            text-align: center;
+            padding: 15px 0;
+            background-color: rgb(255, 153, 0);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .card-header h3 {
+            font-size: 25px;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            background-color: white;
+            padding: 10px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .product-list {}
+
+        .product-item {
+            display: flex;
+            padding: 20px 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .product-item:last-child {
+            border-bottom: none;
+        }
+
+        .product-item input {
+            margin: auto;
+        }
+
+        .product-image {
+            margin-right: 10px;
+        }
+
+        .product-image img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .product-info {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3px 0;
+        }
+
+        .product-action {
+            display: flex;
+            align-items: center;
+            width: 60%;
+            justify-content: flex-end;
+        }
+
+        .product-action button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(200, 200, 200);
+            color: white;
+            border-radius: 5px;
+            cursor: not-allowed;
+        }
+
+        /* button disable */
+        .product-action button:disabled {
+            background-color: rgb(200, 200, 200);
+        }
+
+        .cart {
+            padding-top: 20px;
+            margin-top: 10px;
+            border-top: 1px solid #ccc;
+            display: none;
+        }
+
+        .cart-header {
+            text-align: center;
+        }
+
+        .cart-header h3 {
+            font-size: 25px;
+            color: rgb(255, 153, 0);
+            text-transform: uppercase;
+        }
+
+        .cart-price {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 0;
+            font-size: 25px;
+            border-top: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        .cart-price span {
+            font-weight: bold;
+            color: rgb(255, 153, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Sản phẩm</h3>
+            </div>
+            <div class="card-body">
+                <div class="product-list">
+                    <div class="product-item">
+                        <input type="checkbox" onclick="toggleState(this)" name="choose" id="choose">
+                        <div class="product-image">
+                            <img src="https://cdn.tgdd.vn/Products/Images/42/250261/iphone-13-pro-max-gold-1-600x600.jpg" alt="">
+                        </div>
+                        <div class="product-info">
+                            <h4>iPhone X 64GB</h4>
+                            <p>1 x 128GB</p>
+                            <p>Giá: <span data-price="30200000">30.200.000</span></p>
+                        </div>
+                        <div class="product-action">
+                            <button>Thêm</button>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <input type="checkbox" onclick="toggleState(this)" name="choose" id="choose">
+                        <div class="product-image">
+                            <img src="https://cdn.tgdd.vn/Products/Images/42/246196/Samsung-Galaxy-A53-den-thumb-1-600x600.jpg"
+                                alt="">
+                        </div>
+                        <div class="product-info">
+                            <h4>SamSung Galaxy A52</h4>
+                            <p>1 x 64GB</p>
+                            <p>Giá: <span data-price="9900000">9.900.000</span></p>
+                        </div>
+                        <div class="product-action">
+                            <button>Thêm</button>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <input type="checkbox" onclick="toggleState(this)" name="choose" id="choose">
+                        <div class="product-image">
+                            <img src="https://cdn.tgdd.vn/Products/Images/44/239552/macbook-air-m1-2020-gray-600x600.jpg"
+                                alt="">
+                        </div>
+                        <div class="product-info">
+                            <h4>Macbook Air M1 Pro</h4>
+                            <p>1 x 256GB</p>
+                            <p>Giá: <span data-price="28080000">28.080.000</span></p>
+                        </div>
+                        <div class="product-action">
+                            <button>Thêm</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="cart">
+                    <div class="cart-header">
+                        <h3>Giỏ hàng</h3>
+                    </div>
+                    <div class="product-list"></div>
+                    <div class="cart-price">
+                        <p>Tổng tiền: <span id="total">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let total = document.getElementById('total');
+        function addToCart(product) {
+            document.querySelector('.cart').style.display = 'block';
+            let productItem = product.parentElement.parentElement.cloneNode(true);
+            let productInCart = document.querySelector('.product-list .product-item input[value="' + productItem.querySelector('input').value + '"]');
+            let button = productItem.querySelector('button');
+            button.innerText = 'Xoá';
+            button.style.backgroundColor = 'red';
+            button.setAttribute('onclick', 'removeFromCart(this)');
+            let productList = document.querySelector('.cart .product-list');
+            productList.appendChild(productItem);
+            total.innerText = formatPrice(calcTotal());
+        }
+
+        function removeFromCart(product) {
+            product.parentElement.parentElement.remove();
+            if (document.querySelectorAll('.cart .product-list .product-item').length == 0) {
+                document.querySelector('.cart').style.display = 'none';
+            }
+            total.innerText = formatPrice(calcTotal());
+
+        }
+
+        function calcTotal() {
+            let total = 0;
+            let products = document.querySelectorAll('.cart .product-list .product-item');
+            products.forEach(product => {
+                total += parseInt(product.querySelector('span[data-price]').dataset.price);
+            });
+            return total;
+        }
+
+        function toggleState(product) {
+            let button = product.parentElement.querySelector('button')
+            if (product.checked) {
+                button.setAttribute('onclick', 'addToCart(this)');
+                button.style.cursor = 'pointer';
+                button.style.backgroundColor = 'rgb(255, 153, 0)';
+                button.removeAttribute('disabled');
+            } else {
+                button.removeAttribute('onclick');
+                button.style.cursor = 'not-allowed';
+                button.style.backgroundColor = 'rgb(200, 200, 200)';
+                button.setAttribute('disabled', 'disabled');
+            }
+        }
+
+        function formatPrice(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+        }
+    </script>
+</body>
+
+</html>

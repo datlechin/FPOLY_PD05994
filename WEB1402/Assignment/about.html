@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="topbar">
+            <div class="container">
+                <div class="icons">
+                    <a href="#" style="color: rgb(0, 132, 255);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: rgb(0, 183, 255);"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: rgb(255, 0, 0);"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" style="color: rgb(255, 81, 0);"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="login">
+                    <a href="/login.html"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a href="/register.html"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                    <a href="/cart.html"><i class="fas fa-cart-shopping"></i> Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <a href="/"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png" alt="Logo"></a>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                    <li><a href="math.html"><i class="fas fa-calculator"></i> Giải toán</a></li>
+                    <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main style="margin-bottom: 20vh;">
+        <div class="container">
+            <div class="slide">
+                <img class="slide-item"
+                    src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/78834208_3267455909962868_2422882388448116736_n.png?_nc_cat=101&ccb=1-5&_nc_sid=e3f864&_nc_ohc=TJNIbt0B4UUAX8vrJk8&_nc_ht=scontent.fsgn2-4.fna&oh=00_AT95-r0i4V6Qggbj5bGXQ-GiXWMlq09Xg38uC9fQ-ycegg&oe=62529487"
+                    alt="Image 1">
+                <img class="slide-item"
+                    src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/151858422_5085742508134190_2924463629285995647_n.png?_nc_cat=100&ccb=1-5&_nc_sid=e3f864&_nc_ohc=Ga65hqt0BCwAX8i42TS&tn=l-bPtNvSJz_kKwed&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT9rS8EuTHGV7fv4PA3p9wY7dNdLd46Yh5NDGxR1LarCKw&oe=62552516"
+                    alt="Image 2">
+                <img class="slide-item"
+                    src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/57154750_2608598302515302_7127547933368516608_n.png?_nc_cat=110&ccb=1-5&_nc_sid=e3f864&_nc_ohc=kf-V3l_grtUAX9jhHrv&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT88Ozyg1MtQ709PwI-r52L8HN3br6cFnBa3Wc27cNG_8w&oe=62546CDF"
+                    alt="Image 3">
+                <button onclick="slidePrev()" class="btn-left btn" onclick="plusSlides(-1)"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button onclick="slideNext()" class="btn-right btn" onclick="plusSlides(1)"><i
+                        class="fas fa-chevron-right"></i></button>
+                <div id="slide-position"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Thiết kế &copy; 2022 bởi <a style="color: white;" href="https://www.facebook.com/profile.php?id=100009280109890">Ngô Quốc Đạt</a></p>
+        <p style="margin-top: 5px;">Email: <a style="color: white;" href="mailto:datnqpd05994@fpt.edu.vn">datnqpd05994@fpt.edu.vn</a></p>
+        <p style="margin-top: 30px;"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png" alt=""></p>
+    </footer>
+    <script src="./js/slide.js"></script>
+</body>
+
+</html>

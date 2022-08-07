@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4 - Lab 5</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css">
+</head>
+<body>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center text-uppercase fw-bold text-warning h4">
+                        Tiền vé tour du lịch nha trang
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered text-center">
+                            <thead class="table-warning">
+                                <tr>
+                                    <th class="fw-bold">Gia đình</th>
+                                    <th class="fw-bold">Số người lớn</th>
+                                    <th class="fw-bold">Số trẻ em</th>
+                                    <th class="fw-bold">Giá tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Đào Kho Báu</td>
+                                    <td class="adult" contenteditable onkeyup="tinhTien()">5</td>
+                                    <td class="child" contenteditable onkeyup="tinhTien()">1</td>
+                                    <td class="amount"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mai Văn Táng</td>
+                                    <td class="adult" contenteditable onkeyup="tinhTien()">52</td>
+                                    <td class="child" contenteditable onkeyup="tinhTien()">23</td>
+                                    <td class="amount"></td>
+                                </tr>
+                                <tr>
+                                    <td>Chan Song Húp</td>
+                                    <td class="adult" contenteditable onkeyup="tinhTien()">12</td>
+                                    <td class="child" contenteditable onkeyup="tinhTien()">7</td>
+                                    <td class="amount"></td>
+                                </tr>
+                                <tr>
+                                    <td>Phạm Kỷ Luật</td>
+                                    <td class="adult" contenteditable onkeyup="tinhTien()">5</td>
+                                    <td class="child" contenteditable onkeyup="tinhTien()">12</td>
+                                    <td class="amount"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mai Anh Bảo</td>
+                                    <td class="adult" contenteditable onkeyup="tinhTien()">2</td>
+                                    <td class="child" contenteditable onkeyup="tinhTien()">1</td>
+                                    <td class="amount"></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="fw-bold text-danger">Tổng</th>
+                                    <th class="fw-bold text-danger" id="totalAdult"></th>
+                                    <th class="fw-bold text-danger" id="totalChild"></th>
+                                    <th class="fw-bold text-danger" id="totalAmount"></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row justify-content-around">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <button class="btn btn-success btn-block" onclick="tinhTien()">Tính tiền</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-warning btn-block" onclick="showHide()">Ẩn/Hiện</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ADULT_PRICE = 1000000;
+        const CHILD_PRICE = 600000;
+        const families = document.querySelectorAll('tbody tr');
+
+        const tinhTien = () => {
+            let adultArr = document.getElementsByClassName('adult');
+            let childArr = document.getElementsByClassName('child');
+            let amountArr = document.getElementsByClassName('amount');
+            let totalAdult = 0;
+            let totalChild = 0;
+            let totalAmount = 0;
+
+            for (let i = 0; i < families.length; i++) {
+                let adultCount = parseInt(adultArr[i].innerText);
+                let childCount = parseInt(childArr[i].innerText);
+                totalAdult += adultCount;
+                totalChild += childCount;
+                let amount = totalAdult * ADULT_PRICE + totalChild * CHILD_PRICE;
+                totalAmount += amount;
+                amountArr[i].innerText = formatNumber(amount);
+            }
+
+            document.getElementById('totalAdult').innerText = totalAdult;
+            document.getElementById('totalChild').innerText = totalChild;
+            document.getElementById('totalAmount').innerText = formatNumber(totalAmount);
+        }
+
+        showHide = () => {
+            let tr = document.querySelectorAll('table tr');
+            for (let i = 0; i < tr.length; i++) {
+                if (tr[i].style.display === 'none') {
+                    tr[i].style.display = 'table-row';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+
+        formatNumber = (number) => {
+            return new Intl.NumberFormat().format(number) + ' VNĐ'
+        }
+    </script>
+</body>
+</html>

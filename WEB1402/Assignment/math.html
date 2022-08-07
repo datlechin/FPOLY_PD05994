@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="topbar">
+            <div class="container">
+                <div class="icons">
+                    <a href="#" style="color: rgb(0, 132, 255);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: rgb(0, 183, 255);"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: rgb(255, 0, 0);"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" style="color: rgb(255, 81, 0);"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="login">
+                    <a href="/login.html"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a href="/register.html"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                    <a href="/cart.html"><i class="fas fa-cart-shopping"></i> Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <a href="/"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png" alt="Logo"></a>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                    <li><a href="math.html" class="active"><i class="fas fa-calculator"></i> Giải toán</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main style="margin-bottom: 20vh;">
+        <div class="container" style="justify-content: center;">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Giải phương trình bậc 2</h3>
+                    <p style="font-size: 15px; text-transform: none; margin-top: 10px;">Số lần giải: <strong
+                            id="count">0</strong> lần</p>
+                </div>
+                <div class="card-body">
+                    <div id="error"></div>
+                    <form action="/login.html" id="register-form">
+                        <div class="form-group">
+                            <label for="num1">Số thứ nhất</label>
+                            <input type="number" id="num1" class="form-control" placeholder="Nhập số thứ nhất">
+                        </div>
+                        <div class="form-group">
+                            <label for="num2">Số thứ hai</label>
+                            <input type="number" id="num2" class="form-control" placeholder="Nhập số thứ hai">
+                        </div>
+                        <div class="form-group">
+                            <label for="num3">Số thứ ba</label>
+                            <input type="number" id="num3" class="form-control" placeholder="Nhập số thứ ba">
+                        </div>
+                        <div id="result"></div>
+                        <div class="container">
+                            <button class="btn btn-primary btn-block" id="submitCalculator" style="margin-right: 20px;">Giải ngay</button>
+                            <button class="btn btn-primary btn-block" id="submitGeneratorNumber" style="background-color: rgb(112, 112, 112);">Cho số</button>
+                        </div>
+                    </form>
+                    <p style="text-align: center; margin-top: 30px;">Thời gian hiện tại: <strong id="time"></strong></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Thiết kế &copy; 2022 bởi <a style="color: white;"
+                href="https://www.facebook.com/profile.php?id=100009280109890">Ngô Quốc Đạt</a></p>
+        <p style="margin-top: 5px;">Email: <a style="color: white;"
+                href="mailto:datnqpd05994@fpt.edu.vn">datnqpd05994@fpt.edu.vn</a></p>
+        <p style="margin-top: 30px;"><img src="https://caodang.fpt.edu.vn/wp-content/uploads/logo-trang.png" alt=""></p>
+    </footer>
+    <script src="./js/math.js"></script>
+</body>
+
+</html>

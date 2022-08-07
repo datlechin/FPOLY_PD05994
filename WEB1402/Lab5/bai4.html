@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4 - Lab 5</title>
+    <style>
+                * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            background-color: aliceblue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 500px;
+            height: auto;
+            background-color: white;
+            margin-top: 25px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .card-header {
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 13px 0;
+            background-color: rgb(255, 153, 0);
+            color: white;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .card-body {
+            width: 455px;
+            padding: 15px;
+        }
+
+        #result {
+            margin: 10px auto;
+            color: rgb(255, 153, 0);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        input {
+            margin: 10px 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Ngôn ngữ lập trình yêu thích</h3>
+            </div>
+            <div class="card-body">
+                <div id="result">Chưa chọn ngôn ngữ nào</div>
+                <form>
+                    <input type="checkbox" name="lang" value="php">PHP<br>
+                    <input type="checkbox" name="lang" value="java">Java<br>
+                    <input type="checkbox" name="lang" value="c++">C++<br>
+                    <input type="checkbox" name="lang" value="c#">C#<br>
+                    <input type="checkbox" name="lang" value="python">Python<br>
+                    <input type="checkbox" name="lang" value="javascript">Javascript<br>
+                    <input type="checkbox" name="lang" value="ruby">Ruby<br>
+                    <input type="checkbox" name="lang" value="swift">Swift<br>
+                    <input type="checkbox" name="lang" value="objective-c">Objective-C<br>
+                    <input type="checkbox" name="lang" value="kotlin">Kotlin<br>
+                    <input type="checkbox" name="lang" value="go">Go<br>
+                    <input type="checkbox" name="lang" value="scala">Scala<br>
+                    <input type="checkbox" name="lang" value="rust">Rust<br>
+                    <input type="checkbox" name="lang" value="haskell">Haskell<br>
+                    <input type="checkbox" name="lang" value="typescript">Typescript<br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let form = document.querySelector('form');
+        let result = document.querySelector('#result');
+
+        form.addEventListener('change', function(e) {
+            let lang = [];
+            let checkbox = document.getElementsByName('lang');
+            
+            for (let i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].checked) {
+                    lang.push(checkbox[i].value)
+                }
+            }
+
+            if (lang.length < 1) {
+                result.innerText = 'Chưa chọn ngôn ngữ nào'
+            } else {
+                result.innerText = lang.join(', ')
+            }
+        });
+    </script>
+</body>
+</html>

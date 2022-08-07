@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 3 - Lab 5</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: aliceblue
+        }
+        
+        .container {
+            width: 600px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .title {
+            width: 100%;
+            height: 50px;
+            background-color: #ff9900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .board {
+            width: 100%;
+            height: 400px;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .board button {
+            width: 100px;
+            height: 100px;
+            background-color: #ff9900;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .winning-message button {
+            margin: 15px;
+            padding: 10px 20px;
+            background-color: #ff9900;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .winning-message .winningMessageText {
+            font-size: 20px;
+            color: #ff9900;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Tic Tac Toe</h1>
+        </div>
+        <div class="board">
+            <table>
+                <tr>
+                    <td><button data-cell></button></td>
+                    <td><button data-cell></button></td>
+                    <td><button data-cell></button></td>
+                </tr>
+                <tr>
+                    <td><button data-cell></button></td>
+                    <td><button data-cell></button></td>
+                    <td><button data-cell></button></td>
+                </tr>
+                <tr>
+                    <td><button data-cell></button></td>
+                    <td><button data-cell></button></td>
+                    <td><button data-cell></button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="winning-message">
+            <div class="winningMessageText"></div>
+            <button id="restart">Chơi lại</button>
+        </div>
+    </div>
+
+    <script>
+        const PLAYER_X_CLASS = 'x';
+        const PLAYER_O_CLASS = 'o';
+        const WINNER_COMBINATIONS = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        const cellElements = document.querySelectorAll('[data-cell]');
+        const boardElement = document.querySelector('.board');
+        const winningMessageElement = document.querySelector('.winning-message');
+        const restartButton = document.querySelector('#restart');
+        const winningMessageTextElement = document.querySelector('.winningMessageText');
+        let isPlayerXTurn = true;
+        
+        start();
+
+        function start() {
+            cellElements.forEach(cell => {
+                cell.classList.remove(PLAYER_X_CLASS);
+                cell.classList.remove(PLAYER_O_CLASS);
+                cell.removeEventListener('click', handleClick);
+                cell.addEventListener('click', handleClick, { once: true });
+            });
+        }
+
+        function handleClick(e) {
+            const cell = e.target;
+            const currentClass = isPlayerXTurn ? PLAYER_X_CLASS : PLAYER_O_CLASS;
+            cell.innerText = currentClass;
+            cell.classList.add(currentClass);
+            if (checkWinner(currentClass)) {
+                winningMessageTextElement.innerText = `${currentClass} đã thắng!`;
+                winningMessageElement.classList.add('show');
+            } else if (isDraw()) {
+                winningMessageTextElement.innerText = 'Huề!';
+                winningMessageElement.classList.add('show');
+            } else {
+                isPlayerXTurn = !isPlayerXTurn;
+            }
+        }
+
+
+        function checkWinner(currentClass) {
+            return WINNER_COMBINATIONS.some(combination => {
+                return combination.every(index => {
+                    return cellElements[index].classList.contains(currentClass);
+                });
+            });
+        }
+
+        function isDraw() {
+            return [...cellElements].every(cell => {
+                return cell.classList.contains(PLAYER_X_CLASS) || cell.classList.contains(PLAYER_O_CLASS);
+            });
+        }
+
+        restartButton.addEventListener('click', start);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4 - Lab 4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .card {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ccc;
+            margin: 30px 0;
+        }
+
+        .card-header {
+            text-align: center;
+            padding: 15px 0;
+            background-color: rgb(255, 136, 0);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .card-header h3 {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            margin: 30px 0;
+            padding: 0 0 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(255, 136, 0);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        button:hover {
+            background-color: rgb(255, 123, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Tương tác với Window</h3>
+            </div>
+            <div class="card-body">
+                <button onclick="openWindow()">Mở Window mới</button>
+                <button onclick="closeWindow()">Đóng window</button>
+                <button onclick="printWindow()">In trang web</button>
+                <button onclick="moveWindow()">Di chuyển 1 chút</button>
+                <button onclick="moveByXY()">Di chuyển theo toạ độ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let w;
+
+        openWindow = () => {
+            w = window.open('thongtin.html', '_blank', 'width=400, height=200, left=600, top=50');
+            w.focus();
+        }
+
+        closeWindow = () => {
+            w.close();
+        }
+
+        moveWindow = () => {
+            w.moveBy(5, 10);
+            w.focus();
+        }
+
+        moveByXY = () => {
+            let x = prompt('Nhập vị trí x: ');
+            let y = prompt('Nhập vị trí y: ');
+            w.moveBy(x, y);
+            w.focus();
+        }
+
+        printWindow = () => {
+            w.print();
+            w.focus();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1 - Lab 6</title>
+    <style>
+        .slide {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        img {
+            border-radius: 10px;
+        }
+
+        button {
+            position: absolute;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: rgba(255, 136, 0, 0.603);
+            border-radius: 50%;
+            color: white;
+            padding: 10px 15px;
+        }
+
+        .prev {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 23%;
+        }
+
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: 23%;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .5
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slide">
+            <img src="./images/slide1.png" class="fade slide-item" width="700" alt="Slide 1">
+            <img src="./images/slide2.jpg" class="fade slide-item" width="700" alt="Slide 2">
+            <img src="./images/slide3.png" class="fade slide-item" width="700" alt="Slide 3">
+            <button class="prev" onclick="plusSlides(1)">&#10094;</button>
+            <button class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides();
+        setInterval(showSlides, 5000)
+
+        function showSlides() {
+            let slides = document.getElementsByClassName('slide-item');
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) slideIndex = 1;
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+    </script>
+</body>
+
+</html>

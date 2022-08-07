@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4 - Lab 2</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="title">Đếm bằng sessionStorage</h3>
+            </div>
+            <div class="card-body">
+                <div class="calc">
+                    <p style="text-align: center;">Bạn đã xem trang web <strong id="count"></strong> lần!</p>
+                    <button class="btn btn-primary" id="btn-count">Tăng lượt xem</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getCount() {
+            var count = sessionStorage.getItem('count');
+            if (count == null) {
+                count = 0;
+            }
+            return count;
+        }
+
+        function setCount(count) {
+            sessionStorage.setItem('count', count);
+        }
+
+        let countEl = document.getElementById('count');
+        let btnCount = document.getElementById('btn-count');
+        let count = getCount();
+        count++;
+        setCount(count);
+        countEl.innerHTML = count;
+
+        btnCount.addEventListener('click', function () {
+            count++;
+            setCount(count);
+            countEl.innerHTML = getCount();
+        });
+    </script>
+</body>
+
+</html>

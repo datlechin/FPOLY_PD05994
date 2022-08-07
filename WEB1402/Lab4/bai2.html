@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2 - Lab 4</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: aliceblue;
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .card {
+            width: 400px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .card-header {
+            width: 100%;
+            border-radius: 5px 5px 0 0;
+            background-color: #ff9900;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .card-header h3 {
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .error {
+            text-align: center;
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+        select#hocLuc {
+            height: 40px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #ff9900;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff8800;
+        }
+
+        .btn-secondary {
+            background-color: rgb(47, 173, 75);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgb(45, 156, 69);
+        }
+
+        .calc .btn {
+            margin-top: 20px;
+        }
+
+        #result {
+            margin: 5px;
+        }
+
+        #result p {
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        #result p:last-child {
+            margin-bottom: 0;
+        }
+
+        #result p i {
+            color: #ff9900;
+        }
+
+        #result p span {
+            font-weight: bold;
+            color: #ff9900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="title">Nhập thông tin sinh viên</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="error"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="mssv" placeholder="Nhập mã số sinh viên">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="avgScore" placeholder="Nhập điểm trung bình">
+                    </div>
+                    <button class="btn btn-primary">Đồng ý</button>
+                </form>
+                <div id="result">
+                    <p><i class="fas fa-list-numeric"></i> Mã số sinh viên: <span id="mssv-info"></span></p>
+                    <p><i class="fas fa-user-alt"></i> Họ và tên: <span id="name-info"></span></p>
+                    <p><i class="fas fa-chart-line"></i> Điểm trung bình: <span id="avgScore-info"></span></p>
+                    <p><i class="fas fa-award"></i> Học lực: <span id="hocLuc-info"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let form = document.querySelector('form');
+        let error = document.querySelector('.error');
+        let title = document.querySelector('.title');
+        let result = document.querySelector('#result');
+
+        result.style.display = 'none';
+        error.style.display = 'none';
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let student = {
+                mssv: document.querySelector('#mssv').value,
+                name: document.querySelector('#name').value,
+                avgScore: document.querySelector('#avgScore').value,
+                getHocLuc: function () {
+                    if (this.avgScore >= 8) {
+                        return 'Giỏi';
+                    } else if (this.avgScore >= 6.5) {
+                        return 'Khá';
+                    } else if (this.avgScore >= 5) {
+                        return 'Trung bình';
+                    } else if (this.avgScore >= 3.5) {
+                        return 'Yếu';
+                    } else {
+                        return 'Kém';
+                    }
+                },
+                setStudent: function () {
+                    document.querySelector('#mssv-info').innerHTML = this.mssv;
+                    document.querySelector('#name-info').innerHTML = this.name;
+                    document.querySelector('#avgScore-info').innerHTML = this.avgScore;
+                    document.querySelector('#hocLuc-info').innerHTML = this.getHocLuc();
+                },
+            }
+
+            if (student.mssv == '') {
+                error.innerHTML = 'Vui lòng nhập mã số sinh viên';
+                error.style.display = 'block';
+            } else if (student.name == '') {
+                error.innerHTML = 'Vui lòng nhập họ và tên';
+                error.style.display = 'block';
+            } else if (student.avgScore == '') {
+                error.innerHTML = 'Vui lòng nhập điểm trung bình';
+                error.style.display = 'block';
+            } else {
+                result.style.display = 'block';
+                form.style.display = 'none';
+                title.innerHTML = 'Thông tin sinh viên';
+                student.setStudent();
+            }
+        })
+    </script>
+</body>
+
+</html>

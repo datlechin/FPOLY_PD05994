@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3 - Lab 2</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="title">Giải phương trình bậc 2</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="error"></div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="num1" placeholder="Nhập số a">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="num2" placeholder="Nhập số b">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="num3" placeholder="Nhập số c">
+                    </div>
+                    <button class="btn btn-primary">Tính ngay</button>
+                </form>
+                <div class="calc">
+                    <div id="result"></div>
+                    <button class="btn btn-secondary">Quay lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let form = document.querySelector('form');
+        let error = document.querySelector('.error');
+        let title = document.querySelector('.title');
+        let calc = document.querySelector('.calc');
+        let result = document.querySelector('#result');
+        let num1 = document.querySelector('#num1');
+        let num2 = document.querySelector('#num2');
+        let num3 = document.querySelector('#num3');
+
+        calc.style.display = 'none';
+        error.style.display = 'none';
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let a = num1.value;
+            let b = num2.value;
+            let c = num3.value;
+            if (a == '' || b == '' || c == '') {
+                error.innerHTML = 'Vui lòng nhập đầy đủ thông tin';
+                error.style.display = 'block';
+            } else {
+                title.innerHTML = 'Kết quả';
+                error.style.display = 'none';
+                calc.style.display = 'block';
+                calc.style.textAlign = 'center';
+                form.style.display = 'none';
+                let delta = Math.pow(b, 2) - 4 * a * c;
+                if (delta < 0) {
+                    result.innerHTML = a + 'x<sup>2</sup> + ' + b + 'x + ' + c + ' = 0 <br><br> Phương trình vô nghiệm';
+                } else if (delta == 0) {
+                    result.innerHTML = a + 'x<sup>2</sup> + ' + b + 'x + ' + c + ' = 0 <br><br> Phương trình có nghiệm kép: x = ' + (-b / (2 * a));
+                } else {
+                    let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                    let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                    result.innerHTML = a + 'x<sup>2</sup> + ' + b + 'x + ' + c + ' = 0 <br><br> Phương trình có 2 nghiệm phân biệt <br><br> <b>x1</b> = ' + x1 + ' <br> <b>x2</b> = ' + x2;
+                }
+            }
+        })
+
+        document.querySelector('.btn-secondary').addEventListener('click', function () {
+            form.style.display = 'block';
+            calc.style.display = 'none';
+            title.innerHTML = 'Giải phương trình bậc 2';
+        })
+    </script>
+</body>
+
+</html>

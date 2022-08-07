@@ -1,0 +1,44 @@
+<div class="container" style="justify-content: center;">
+    <div class="card">
+        <div class="cart-header">
+            <label style="float: right;">
+                <input type="checkbox" ng-click="toggleAll()"> Chọn tất cả
+            </label>
+            <h3>Giỏ hàng của bạn</h3>
+        </div>
+        <div class="cart-content">
+            <div class="list-product">
+                <div class="product-item" ng-repeat="(key, product) in products">
+                    <input type="checkbox" ng-model="product.checked">
+                    <img ng-src="{{ product.image }}">
+                    <div class="info">
+                        <a href="#" class="name">{{ product.name }}</a>
+                        <div class="quantity">
+                            <div class="number">
+                                <i ng-click="decrease(product)">-</i>
+                                <input autocomplete="off" class="qty" ng-disabled="!product.checked"
+                                    ng-model="product.quantity">
+                                <i ng-click="increase(product)">+</i>
+                            </div>
+                        </div>
+                        <div class="unit">{{ formatNumber(product.price) }} / cái</div>
+                    </div>
+                    <div class="money">
+                        <strong>{{ product.checked ? formatNumber(product.quantity * product.price) : '0đ' }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <div class="title">Tổng tiền:</div>
+                <div class="money">
+                    <strong>{{ formatNumber(total()) }}</strong>
+                </div>
+            </div>
+            <div class="cart-button">
+                <a href="#" class="btn btn-primary btn-block">Thanh toán</a>
+            </div>
+        </div>
+    </div>
+</div>

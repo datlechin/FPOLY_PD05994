@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2 - Lab 6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header text-center">
+                        <span class="text-uppercase fw-bold h4 text-warning">Đặt hàng</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert" style="display: none;"></div>
+                        <form>
+                            <div class="row form-group mb-3">
+                                <label for="name" class="col-md-3 form-label">Tên sản phẩm</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm">
+                                </div>
+                            </div>
+                            <div class="row form-group mb-3">
+                                <label for="type" class="col-md-3 form-label">Loại hàng</label>
+                                <div class="col-md-9">
+                                    <select id="type" class="form-select">
+                                        <option value="">Chọn loại hàng</option>
+                                        <option value="DT">Điện thoại</option>
+                                        <option value="MT">Máy tính</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group mb-3">
+                                <label for="unit" class="col-md-3 form-label">Đơn giá</label>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control" id="unit" placeholder="Nhập đơn giá">
+                                </div>
+                            </div>
+                            <div class="row form-group mb-3">
+                                <label for="address" class="col-md-3 form-label">Nơi nhận hàng</label>
+                                <div class="col-md-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="address" value="0"
+                                            onclick="show(false)" />
+                                        <label class="form-check-label">Nội thành</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="address" value="1"
+                                            onclick="show(true)" />
+                                        <label class="form-check-label">Ngoại thành</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group mb-3 fee" style="display: none;">
+                                <label for="fee" class="col-md-3 form-label">Phí vận chuyển</label>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control" id="fee"
+                                        placeholder="Nhập phí vận chuyển">
+                                </div>
+                            </div>
+                            <button class="btn btn-warning btn-block">Đặt mua</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const show = (bool) => {
+            return bool ? document.querySelector('.fee').style.display = '' : document.querySelector('.fee').style.display = 'none';
+        }
+
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            check();
+        })
+
+        const check = () => {
+            let name = document.getElementById('name').value;
+            let type = document.getElementById('type').value;
+            let unit = document.getElementById('unit').value;
+            let address = document.getElementsByName('address');
+            let fee = document.getElementById('fee').value;
+            let radios = document.getElementsByName('address');
+            let errors = [];
+
+            if (name == '') {
+                errors.push('Tên sản phẩm không được để trống');
+            }
+            if (type == '') {
+                errors.push('Loại hàng không được để trống');
+            }
+            if (unit == '') {
+                errors.push('Đơn giá không được để trống');
+            }
+            if (isNaN(unit)) {
+                errors.push('Đơn giá phải là số');
+            }
+            if (parseInt(unit) < 0) {
+                errors.push('Đơn giá phải lớn hơn 0');
+            }
+            if (address[0].checked == false && address[1].checked == false) {
+                errors.push('Bạn chưa chọn nơi nhận hàng');
+            }
+            if (address[1].checked == true && fee == '') {
+                errors.push('Bạn chưa nhập phí vận chuyển');
+            }
+            if (isNaN(fee)) {
+                errors.push('Phí vận chuyển phải là số');
+            }
+            if (parseInt(fee) < 0) {
+                errors.push('Phí vận chuyển phải lớn hơn 0');
+            }
+
+
+            if (errors.length > 0) {
+                let alert = document.querySelector('.alert');
+                alert.classList.add('alert-danger');
+                alert.innerHTML = '';
+                errors.forEach(error => {
+                    alert.innerHTML += `<li>${error}</li>`;
+                })
+                alert.style.display = '';
+            } else {
+                let alert = document.querySelector('.alert');
+                alert.classList.remove('alert-danger')
+                alert.classList.add('alert-success');
+                alert.innerHTML = '';
+                alert.innerHTML = `<p>Đặt hàng thành công</p>`;
+                alert.style.display = '';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

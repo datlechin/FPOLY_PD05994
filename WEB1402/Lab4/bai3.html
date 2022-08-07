@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2 - Lab 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue;
+        }
+
+        header {
+            background-color: #b700ff;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header #greeting {
+            margin: 10px 0;
+            font-size: 30px;
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        main .content {
+            width: 60%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        main .content h2 {
+            margin: 20px 0;
+        }
+
+        main .content h2:nth-of-type(1) {
+            margin-top: 0;
+        }
+
+        main .content img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        header button {
+            background-color: rgb(255, 0, 0);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 150px;
+            font-size: 18px;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            background-color: #ff9100;
+            color: white;
+            padding: 15px;
+        }
+
+        footer p {
+            padding: 3px;
+        }
+
+        footer p a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="greeting"></div>
+        <div id="datetime"></div>
+        <button id="action">Dừng</button>
+    </header>
+    <main style="height: 73vh;"></main>
+    <footer>
+        <p>Họ tên: <strong>Ngô Quốc Đạt</strong></p>
+        <p>Email: <a href="mailto:datlechin@gmail.com"><strong>datlechin@gmail.com</strong></a></p>
+    </footer>
+
+    <script>
+        let greeting = document.getElementById('greeting');
+        let action = document.getElementById('action');
+
+        let dongHo = null;
+
+        function setGreeting() {
+            let now = new Date();
+            let hour = now.getHours();
+            let greetingText = '';
+
+            if (hour >= 0 && hour < 12) {
+                greetingText = 'Chào buổi sáng';
+            } else if (hour >= 12 && hour < 18) {
+                greetingText = 'Chào buổi chiều';
+            } else {
+                greetingText = 'Chào buổi tối';
+            }
+
+            greeting.innerHTML = greetingText;
+        }
+        function time() {
+            let now = new Date();
+            document.getElementById('datetime').innerHTML = now.toLocaleString();
+        }
+
+        setGreeting();
+        dongHo = setInterval(time, 1);
+
+        function startStopDH() {
+            if (dongHo) {
+                clearInterval(dongHo);
+                dongHo = null;
+                action.innerHTML = 'Chạy';
+                action.style.backgroundColor = '#ff9100';
+            } else {
+                dongHo = setInterval(time, 1);
+                action.innerHTML = 'Dừng';
+                action.style.backgroundColor = 'rgb(255, 0, 0)';
+            }
+        }
+
+        action.addEventListener('click', startStopDH);
+
+        setTimeout(() => {
+            greeting.innerHTML = 'Em tên là Ngô Quốc Đạt, chào Cô. Chúc cô một ngày an lành!'
+        }, 5000);
+    </script>
+</body>
+
+</html>

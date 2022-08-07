@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="slide" ng-switch="slideIndex">
+        <img ng-repeat="(key, value) in slides" ng-show="value.active" class="slide-item" ng-src="{{ value.image }}" alt="{{ value.text }}">
+        <button class="btn-left btn" ng-click="prev()"><i class="fas fa-chevron-left"></i></button>
+        <button class="btn-right btn" ng-click="next()"><i class="fas fa-chevron-right"></i></button>
+        <div id="slide-position">{{ slideIndex + 1 }} / {{ slides.length }}</div>
+    </div>
+</div>

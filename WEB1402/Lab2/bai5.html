@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 5 - Lab 2</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="title">Tính chu vi, diện tích hình tròn</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="error"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="radius" placeholder="Nhập bán kính hình tròn">
+                    </div>
+                    <button class="btn btn-primary">Tính ngay</button>
+                </form>
+                <div id="result" style="text-align: center;">
+                    <p>Chu vi hình tròn: <strong id="circumference"></strong></p>
+                    <p>Diện tích hình tròn: <strong id="area"></strong></p>
+                    <button class="btn btn-secondary">Quay lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let form = document.querySelector('form');
+        let error = document.querySelector('.error');
+        let title = document.querySelector('.title');
+        let result = document.querySelector('#result');
+        let radius = document.querySelector('#radius');
+        let circumference = document.querySelector('#circumference');
+        let area = document.querySelector('#area');
+
+        error.style.display = 'none';
+        result.style.display = 'none';
+
+        const PI = 3.14;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let radiusValue = radius.value;
+            if (radiusValue == '') {
+                error.style.display = 'block';
+                error.innerHTML = 'Vui lòng nhập bán kính hình tròn';
+            } else if (isNaN(radiusValue)) {
+                error.style.display = 'block';
+                error.innerHTML = 'Vui lòng nhập số';
+            } else {
+                form.style.display = 'none';
+                error.style.display = 'none';
+                result.style.display = 'block';
+                circumference.innerHTML = (2 * PI * radiusValue);
+                area.innerHTML = (PI * radiusValue * radiusValue);
+            }
+        })
+
+        document.querySelector('.btn-secondary').addEventListener('click', function () {
+            form.style.display = 'block';
+            result.style.display = 'none';
+            radius.value = '';
+        })
+    </script>
+</body>
+
+</html>

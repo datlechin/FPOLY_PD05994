@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2 - Lab 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aliceblue;
+        }
+        header {
+            background-color: #00e1ff;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        header #greeting {
+            margin: 10px 0;
+            font-size: 30px;
+        }
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        main .content {
+            width: 60%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        main .content h2 {
+            margin: 20px 0;
+        }
+        main .content h2:nth-of-type(1) {
+            margin-top: 0;
+        }
+        main .content img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+            background-color: #ff9100;
+            color: white;
+            padding: 15px;
+        }
+        footer p {
+            padding: 3px;
+        }
+        footer p a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="greeting"></div>
+        <div id="datetime"></div>
+    </header>
+    <main>
+        <div class="content">
+            <h2>JavaScript là gì?</h2>
+            <img src="https://cafedev.vn/wp-content/uploads/2019/12/cafedev_javascript.png" alt="">
+            <p>Nói một cách đơn giản, JavaScript là ngôn ngữ lập trình hướng đối tượng được thiết kế giúp phát triển web dễ dàng và hấp dẫn hơn. Trong hầu hết các trường hợp, JavaScript được sử dụng để tạo các yếu tố tương tác phản ứng trên các trang web, nâng cao trải nghiệm người dùng. Những thứ như menu, hình động, trình phát video, bản đồ tương tác và thậm chí các trò chơi đơn giản trên trình duyệt đều được tạo ra nhanh chóng và dễ dàng với JavaScript.</p>
+            <h2>JavaScript có thể làm được gì?</h2>
+            <p>Mặc dù JavaScript thường được nói đến như một ngôn ngữ được thiết kế chủ yếu để phát triển web front-end - và thực tế, đó là điều tôi tập trung cho đến giờ - câu trả lời cho 'JavaScript dùng để làm gì?' không hề đơn giản. Cùng với các yếu tố web tương tác, kiến thức vững chắc về JavaScript sẽ cho phép bạn tạo ra những điều dưới đây:</p>
+        </div>
+    </main>
+    <footer>
+        <p>Họ tên: <strong>Ngô Quốc Đạt</strong></p>
+        <p>Email: <a href="mailto:datlechin@gmail.com"><strong>datlechin@gmail.com</strong></a></p>
+    </footer>
+
+    <script>
+        let greeting = document.getElementById('greeting');
+        let datetime = document.getElementById('datetime');
+
+        greeting.innerHTML = getHour();
+        setInterval(() => {
+            let date = new Date();
+            datetime.innerHTML = date.toLocaleString();
+        }, 1);
+
+        function getHour() {
+            let date = new Date();
+            let hour = date.getHours();
+            
+            if (hour >= 0 && hour < 12) {
+                return 'Chào buổi sáng!';
+            } else if (hour >= 12 && hour < 18) {
+                return 'Chào buổi chiều!';
+            } else if (hour >= 18 && hour < 24) {
+                return 'Chào buổi tối!';
+            }
+        }
+    </script>
+</body>
+</html>
