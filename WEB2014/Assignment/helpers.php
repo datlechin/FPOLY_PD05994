@@ -154,3 +154,47 @@ function str_slug(string $str): string
 
     return strtolower($string);
 }
+
+function upload_image($file): false|string
+{
+    $name = $file['name'];
+    $size = $file['size'];
+    $type = $file['type'];
+    $tmp_name = $file['tmp_name'];
+    $ext = pathinfo($name, PATHINFO_EXTENSION);
+
+    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+    $max_size = 5 * 1024 * 1024;
+
+    // Kiểm tra định dạng
+    if (!in_array($ext, $allowed)) {
+        return false;
+    }
+
+    // Kiểm tra kích thước
+    if ($size > $max_size) {
+        return false;
+    }
+
+    // Xảy ra lỗi
+    if ($file['error']) {
+        return false;
+    }
+
+    // Upload hình ảnh
+    $dir = dirname(__FILE__) . '/uploads/';
+    $name = uniqid() . '.' . $ext;
+    make_folder('uploads');
+    if (!move_uploaded_file($tmp_name, $dir . $name)) {
+        return false;
+    }
+
+    return $name;
+}
+
+function make_folder(string $path): void
+{
+    if (!file_exists(__DIR__ . '/' . $path)) {
+        mkdir(__DIR__ . '/' . $path, 0777, true);
+    }
+}

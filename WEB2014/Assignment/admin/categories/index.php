@@ -62,8 +62,8 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                                 <td><?= $category['priority'] ?></td>
                                 <td><?= $category['image'] ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?= $category['id'] ?>" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Sửa</a>
-                                    <a href="delete.php?id=<?= $category['id'] ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>
+                                    <a href="<?= url('admin/categories/edit.php?id=' . $category['id']) ?>" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Sửa</a>
+                                    <a href="<?= url('admin/categories/delete.php?id=' . $category['id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

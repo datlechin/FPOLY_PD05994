@@ -7,15 +7,14 @@
  */
 
 require_once '../../bootstrap.php';
-require_once '../partials/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = cleanInput($_POST['name']);
     $description = cleanInput($_POST['description']);
-    $image = $_FILES['image'];
     $slug = str_slug($name);
+    $image = upload_image($_FILES['image']);
 
-    $result = mysqli_query($db, "INSERT INTO categories (`name`, `slug`, `description`, `priority`, `image`) VALUES ('$name', '$slug', '$description', 1, '')");
+    $result = mysqli_query($db, "INSERT INTO categories (`name`, `slug`, `description`, `priority`, `image`) VALUES ('$name', '$slug', '$description', 1, '$image')");
 
     if ($result) {
         echo '<script>alert(\'Thêm danh mục mới thành công\')</script>';
@@ -24,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $result = $db->query('SELECT * FROM categories');
 $categories = $result->fetch_all(MYSQLI_ASSOC);
+
+require_once '../partials/header.php';
 ?>
     <div class="content-wrapper">
         <section class="content-header">
