@@ -198,3 +198,18 @@ function make_folder(string $path): void
         mkdir(__DIR__ . '/' . $path, 0777, true);
     }
 }
+
+function get_categories(): array
+{
+    global $db;
+    $result = $db->query("SELECT * FROM categories");
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+function str_limit(string $str, int $limit = 100): string
+{
+    if (strlen($str) > $limit) {
+        return substr($str, 0, $limit) . '...';
+    }
+    return $str;
+}

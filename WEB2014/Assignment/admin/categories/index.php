@@ -7,27 +7,16 @@
  */
 
 require_once '../../bootstrap.php';
-require_once '../partials/header.php';
+
+$title = 'Quản lý danh mục';
 
 $result = $db->query('SELECT * FROM categories');
 $categories = $result->fetch_all(MYSQLI_ASSOC);
+
+require_once '../partials/header.php';
 ?>
     <div class="content-wrapper">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Quản lý danh mục</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Quản lý danh mục</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <?php include '../partials/breadcrumb.php' ?>
         <section class="content">
             <div class="card">
                 <div class="card-header">
@@ -48,8 +37,8 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                             <th>#</th>
                             <th>Tên danh mục</th>
                             <th>Mô tả ngắn</th>
-                            <th>Độ ưu tiên</th>
                             <th>Hình ảnh</th>
+                            <th>Trạng thái</th>
                             <th>Thao tác</th>
                         </tr>
                         </thead>
@@ -58,9 +47,16 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                             <tr>
                                 <td><?= $category['id'] ?></td>
                                 <td><?= $category['name'] ?></td>
-                                <td><?= $category['description'] ?></td>
-                                <td><?= $category['priority'] ?></td>
-                                <td><?= $category['image'] ?></td>
+                                <td><?= str_limit($category['description']) ?></td>
+                                <td>
+                                    <img src="<?= url('uploads/' . $category['image']) ?>" width="100" class="img-thumbnail">
+                                </td>
+                                <td>
+                                    <?php if ($category['status'] == 1) : ?>
+                                        <span class="badge badge-success">Hiển thị</span>
+                                    <?php else : ?>
+                                        <span class="badge badge-danger">Ẩn</span>
+                                    <?php endif; ?>
                                 <td>
                                     <a href="<?= url('admin/categories/edit.php?id=' . $category['id']) ?>" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Sửa</a>
                                     <a href="<?= url('admin/categories/delete.php?id=' . $category['id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>

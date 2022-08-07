@@ -8,6 +8,8 @@
 
 require_once '../../bootstrap.php';
 
+$title = 'Thêm danh mục mới';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = cleanInput($_POST['name']);
     $description = cleanInput($_POST['description']);
@@ -17,43 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($db, "INSERT INTO categories (`name`, `slug`, `description`, `priority`, `image`) VALUES ('$name', '$slug', '$description', 1, '$image')");
 
     if ($result) {
-        echo '<script>alert(\'Thêm danh mục mới thành công\')</script>';
+        redirect('admin/categories');
     }
 }
-
-$result = $db->query('SELECT * FROM categories');
-$categories = $result->fetch_all(MYSQLI_ASSOC);
 
 require_once '../partials/header.php';
 ?>
     <div class="content-wrapper">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Quản lý danh mục</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Quản lý danh mục</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <?php include '../partials/breadcrumb.php' ?>
         <section class="content">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Thêm danh mục mới</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="card-body">
                     <form action="<?= url('admin/categories/create.php') ?>" method="post" enctype="multipart/form-data">
