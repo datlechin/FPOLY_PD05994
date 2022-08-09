@@ -46,3 +46,22 @@ CREATE TABLE `categories`
 INSERT INTO `roles` (`name`)
 VALUES ('admin'),
        ('user');
+
+CREATE TABLE `products`
+(
+    `id`          int(11)        NOT NULL AUTO_INCREMENT,
+    `name`        varchar(255)   NOT NULL,
+    `slug`        varchar(255)   NOT NULL,
+    `description` text           NOT NULL,
+    `price`       decimal(10, 2) NOT NULL,
+    `image`       varchar(255)            DEFAULT NULL,
+    `gallery`     text           NOT NULL,
+    `category_id` int(11)        NOT NULL,
+    `status`      tinyint(1)     NOT NULL DEFAULT 1,
+    `created_at`  datetime       NOT NULL DEFAULT current_timestamp(),
+    `updated_at`  datetime       NOT NULL DEFAULT current_timestamp(),
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+    UNIQUE KEY `slug` (`slug`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;

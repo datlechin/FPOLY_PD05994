@@ -57,6 +57,7 @@ require_once '../partials/header.php';
                                     <?php else : ?>
                                         <span class="badge badge-danger">Ẩn</span>
                                     <?php endif; ?>
+                                </td>
                                 <td>
                                     <a href="<?= url('admin/categories/edit.php?id=' . $category['id']) ?>" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Sửa</a>
                                     <a href="<?= url('admin/categories/delete.php?id=' . $category['id']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>

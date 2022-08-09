@@ -71,6 +71,30 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link <?= active('admin/products') ?>">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Sản phẩm
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= url('admin/products') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách sản phẩm</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= url('admin/products/create.php') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm sản phẩm mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>

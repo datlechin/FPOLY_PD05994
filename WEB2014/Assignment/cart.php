@@ -12,7 +12,8 @@ require_once 'partials/header.php';
 // Remove product from session cart
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
-    unset($_SESSION['cart'][$id]);
+    $key = array_search($id, $_SESSION['cart']);
+    unset($_SESSION['cart'][$key]);
 }
 ?>
     <div class="container">
@@ -29,29 +30,19 @@ if (isset($_POST['id'])) {
                                     <th>Hình ảnh</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Đơn giá</th>
-                                    <th>Số lượng</th>
-                                    <th>Thành tiền</th>
                                     <th>Xoá</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach (get_cart() as $key => $product) : ?>
+                                <?php foreach (get_cart() as $product) : ?>
                                     <tr>
-                                        <td><?= $key+1; ?></td>
-                                        <td><img src="<?= $product['image'] ?>" height="120" alt="<?= $product['name'] ?>"></td>
+                                        <td><?= $product['id']; ?></td>
+                                        <td><img src="<?= url('uploads/' . $product['image']) ?>" height="120" alt="<?= $product['name'] ?>"></td>
                                         <td><?= $product['name'] ?></td>
                                         <td><?= number_format($product['price']) ?>đ</td>
-                                        <td width="120px">
-                                            <div class="input-group">
-                                                <button class="input-group-text">-</button>
-                                                <input type="text" class="form-control" value="<?= $product['qty'] ?>">
-                                                <button class="input-group-text">+</button>
-                                            </div>
-                                        </td>
-                                        <td><?= number_format($product['price'] * $product['qty']) ?>đ</td>
                                         <td>
                                             <form action="" method="post">
-                                                <input type="hidden" name="id" value="<?= $key ?>">
+                                                <input type="hidden" name="id" value="<?= $product['id'] ?>">
                                                 <button type="submit" class="btn btn-danger">Xoá</button>
                                             </form>
                                         </td>

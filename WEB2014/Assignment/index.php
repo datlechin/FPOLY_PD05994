@@ -9,20 +9,18 @@
 require_once 'bootstrap.php';
 require_once 'partials/header.php';
 
-$products = [];
+$result = $db->query("SELECT * FROM products");
+$products = $result->fetch_all(MYSQLI_ASSOC);
 
 // Add product to session cart
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_POST['id'];
 
-    if (! isset($_SESSION['cart'][$id])) {
-        $_SESSION['cart'][] = $products[$id];
-        echo '<script>alert("Thêm sản phẩm vào giỏ hàng thành công!")</script>';
-    } else {
-        $_SESSION['cart'][$id]['qty']++;
-        echo '<script>alert("Cập nhật số lượng thành công!")</script>';
+    if (!in_array($id, $_SESSION['cart'] ?? [])) {
+        $_SESSION['cart'][] = $id;
     }
 }
+
 ?>
 
     <div class="container">
@@ -48,13 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php endforeach; ?>
         </div>
         <div class="row mt-5">
-            <?php foreach ($products as $key => $product) : ?>
+            <?php foreach ($products as $product) : ?>
                 <div class="col-md-3 mb-3">
                     <div class="card">
-                        <img src="<?= $product['image'] ?>" alt="" class="card-img-top" style="height: 300px">
+                        <img src="<?= url('uploads/' . $product['image']) ?>" alt="" class="card-img-top"
+                             style="max-height: 230px">
                         <form action="" method="post">
-                            <div class="card-body">
-                                <input type="hidden" name="id" value="<?= $key ?>">
+                            <div class="card-body text-center">
+                                <input type="hidden" name="id" value="<?= $product['id'] ?>">
                                 <h4 class="fs-6"><?= $product['name'] ?></h4>
                                 <span class="text-danger fs-5 fw-bold"><?= number_format($product['price']) ?>đ</span>
                             </div>

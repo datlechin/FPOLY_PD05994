@@ -110,7 +110,19 @@ function count_cart(): int
 }
 
 function get_cart(): array {
-    return $_SESSION['cart'] ?? [];
+    $cart = $_SESSION['cart'] ?? [];
+    $products = [];
+    foreach ($cart as $item) {
+        $products[] = get_product($item);
+    }
+
+    return $products;
+}
+
+function get_product($id) {
+    global $db;
+    $result = $db->query("SELECT * FROM products WHERE id = $id");
+    return $result->fetch_assoc();
 }
 
 function str_slug(string $str): string
@@ -212,4 +224,11 @@ function str_limit(string $str, int $limit = 100): string
         return substr($str, 0, $limit) . '...';
     }
     return $str;
+}
+
+function get_category(int $id): array
+{
+    global $db;
+    $result = $db->query("SELECT * FROM categories WHERE id = $id");
+    return $result->fetch_assoc();
 }
