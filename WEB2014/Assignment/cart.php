@@ -14,6 +14,7 @@ if (isset($_POST['id'])) {
     $id = $_POST['id'];
     $key = array_search($id, $_SESSION['cart']);
     unset($_SESSION['cart'][$key]);
+    redirect('/cart.php');
 }
 ?>
     <div class="container">
@@ -55,6 +56,16 @@ if (isset($_POST['id'])) {
                                 <?php endif; ?>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row justify-content-between">
+                            <div class="col-6 text-start">
+                                <a href="<?= url('/') ?>" class="btn btn-primary">Tiếp tục mua hàng</a>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a href="<?= url('checkout.php') ?>" class="btn btn-success">Thanh toán</a>
+                            </div>
                         </div>
                     </div>
                 </div>

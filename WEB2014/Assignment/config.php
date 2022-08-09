@@ -12,6 +12,6 @@ return [
         'host' => 'localhost',
         'dbname' => 'web2014',
         'user' => 'root',
-        'password' => '',
+        'password' => 'Datpro123',
     ],
 ];

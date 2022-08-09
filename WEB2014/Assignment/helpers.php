@@ -232,3 +232,14 @@ function get_category(int $id): array
     $result = $db->query("SELECT * FROM categories WHERE id = $id");
     return $result->fetch_assoc();
 }
+
+function get_cart_total(): int
+{
+    $cart = $_SESSION['cart'] ?? [];
+    $total = 0;
+    foreach ($cart as $item) {
+        $product = get_product($item);
+        $total += $product['price'];
+    }
+    return $total;
+}

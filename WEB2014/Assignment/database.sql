@@ -65,3 +65,30 @@ CREATE TABLE `products`
     UNIQUE KEY `slug` (`slug`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE `orders`
+(
+    `id`          int(11)        NOT NULL AUTO_INCREMENT,
+    `user_id`     int(11)        NOT NULL,
+    `status`      tinyint(1)     NOT NULL DEFAULT 0,
+    `created_at`  datetime       NOT NULL DEFAULT current_timestamp(),
+    `updated_at`  datetime       NOT NULL DEFAULT current_timestamp(),
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE `order_details`
+(
+    `id`          int(11)        NOT NULL AUTO_INCREMENT,
+    `order_id`    int(11)        NOT NULL,
+    `product_id`  int(11)        NOT NULL,
+    `quantity`    int(11)        NOT NULL,
+    `price`       decimal(10, 2) NOT NULL,
+    `created_at`  datetime       NOT NULL DEFAULT current_timestamp(),
+    `updated_at`  datetime       NOT NULL DEFAULT current_timestamp(),
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+    FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;

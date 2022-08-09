@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!in_array($id, $_SESSION['cart'] ?? [])) {
         $_SESSION['cart'][] = $id;
+
+        redirect('/cart.php');
     }
 }
 

@@ -95,6 +95,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= url('/') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-backward"></i>
+                        <p>
+                            Về trang chủ
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

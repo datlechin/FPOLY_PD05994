@@ -41,7 +41,6 @@
                             <?php if (isAdmin()) : ?>
                                 <li><a class="dropdown-item" href="<?= url('admin/dashboard.php') ?>">Trang quản trị</a></li>
                             <?php endif; ?>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
