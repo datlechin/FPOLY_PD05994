@@ -41,6 +41,8 @@
                             <?php if (isAdmin()) : ?>
                                 <li><a class="dropdown-item" href="<?= url('admin/dashboard.php') ?>">Trang quản trị</a></li>
                             <?php endif; ?>
+                            <li><a class="dropdown-item" href="<?= url('profile.php') ?>">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="<?= url('orders.php') ?>">Đơn hàng</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

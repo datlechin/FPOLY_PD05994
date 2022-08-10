@@ -119,7 +119,8 @@ function get_cart(): array {
     return $products;
 }
 
-function get_product($id) {
+function get_product($id): bool|array|null
+{
     global $db;
     $result = $db->query("SELECT * FROM products WHERE id = $id");
     return $result->fetch_assoc();

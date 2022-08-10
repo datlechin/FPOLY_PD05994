@@ -11,6 +11,20 @@ require_once 'bootstrap.php';
 redirectIfNotLoggedIn();
 
 require_once 'partials/header.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!empty(get_cart())) {
+        $order = $db->query("INSERT INTO orders (`user_id`) VALUES ('{$_SESSION['user_id']}')");
+        $orderId = $db->insert_id;
+        foreach (get_cart() as $product) {
+            $db->query("INSERT INTO order_details (`order_id`, `product_id`, `quantity`, `price`) VALUES ('{$orderId}', '{$product['id']}', 1, '{$product['price']}')");
+        }
+
+        unset($_SESSION['cart']);
+
+        redirect('orders.php');
+    }
+}
 ?>
 <div class="container">
     <div class="text-center pb-5">
