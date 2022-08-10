@@ -12,7 +12,7 @@ redirectIfNotLoggedIn();
 
 $title = 'Đơn hàng của bạn';
 
-$result = $db->query("SELECT * FROM orders JOIN order_details ON orders.id = order_details.order_id WHERE orders.user_id = {$_SESSION['user_id']} ORDER BY orders.id DESC");
+$result = $db->query("SELECT user_id, status, orders.id, orders.created_at, SUM(od.price * od.quantity) AS total FROM orders INNER JOIN order_details od on orders.id = od.order_id");
 $orders = $result->fetch_all(MYSQLI_ASSOC);
 
 require_once 'partials/header.php';
@@ -38,9 +38,9 @@ require_once 'partials/header.php';
                             <tbody>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td>#<?= $order['order_id'] ?></td>
+                                        <td>#<?= $order['id'] ?></td>
                                         <td><?= $order['created_at'] ?></td>
-                                        <td><?= number_format($order['price']) ?>đ</td>
+                                        <td><?= number_format($order['total']) ?>đ</td>
                                         <td>
                                             <?php if ($order['status'] == 0): ?>
                                                 <span class="badge text-bg-warning">Chờ xử lý</span>
@@ -50,7 +50,7 @@ require_once 'partials/header.php';
                                                 <span class="badge text-bg-danger">Đã hủy</span>
                                             <?php endif; ?>
                                         </td>
-                                        <td><a href="order-detail.php?id=<?php echo $order['order_id']; ?>">Chi tiết</a></td>
+                                        <td><a href="order-detail.php?id=<?= $order['id'] ?>">Chi tiết</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

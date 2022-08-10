@@ -12,8 +12,8 @@ $id = $_GET['id'] ?? null;
 
 // delete
 
-$result = $db->query("DELETE FROM categories WHERE id = $id");
+$result = $db->query("DELETE FROM products WHERE id = $id");
 
 if ($result) {
-    redirect('/admin/categories');
+    redirect('/admin/products');
 }
