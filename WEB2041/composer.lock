@@ -1,0 +1,353 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "6fda0f1124462d7aeafb7b55111708b7",
+    "packages": [
+        {
+            "name": "ausi/slug-generator",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ausi/slug-generator.git",
+                "reference": "4e761b08966c5d4aeecc1829ac997e5a5a29d231"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ausi/slug-generator/zipball/4e761b08966c5d4aeecc1829ac997e5a5a29d231",
+                "reference": "4e761b08966c5d4aeecc1829ac997e5a5a29d231",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "ext-mbstring": "*",
+                "ext-pcre": "*",
+                "lib-icu": ">=4.2.1",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "contao/easy-coding-standard": "^3.0",
+                "phpstan/phpstan": "^0.12.40",
+                "phpstan/phpstan-phpunit": "^0.12.16",
+                "phpunit/phpunit": "^7.5.20 || ^8.5.4 || ^9.4.2",
+                "psalm/plugin-phpunit": "^0.9",
+                "slam/phpstan-extensions": "^5.0",
+                "vimeo/psalm": "^3.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ausi\\SlugGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Auswöger",
+                    "email": "martin@auswoeger.com"
+                }
+            ],
+            "description": "Slug Generator",
+            "keywords": [
+                "ascii",
+                "cldr",
+                "pretty-url",
+                "slug",
+                "slug-generator",
+                "slugify",
+                "transliteration",
+                "unicode"
+            ],
+            "support": {
+                "issues": "https://github.com/ausi/slug-generator/issues",
+                "source": "https://github.com/ausi/slug-generator/tree/v1.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ausi",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-19T15:25:33+00:00"
+        },
+        {
+            "name": "catfan/medoo",
+            "version": "v2.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/catfan/Medoo.git",
+                "reference": "74be58f80d330d1075ef3bfd0fb3d057349597ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/74be58f80d330d1075ef3bfd0fb3d057349597ae",
+                "reference": "74be58f80d330d1075ef3bfd0fb3d057349597ae",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "suggest": {
+                "ext-pdo_dblib": "For MSSQL or Sybase database on Linux/UNIX platform",
+                "ext-pdo_mysql": "For MySQL or MariaDB database",
+                "ext-pdo_oci": "For Oracle database",
+                "ext-pdo_pqsql": "For PostgreSQL database",
+                "ext-pdo_sqlite": "For SQLite database",
+                "ext-pdo_sqlsrv": "For MSSQL database on both Window/Liunx platform"
+            },
+            "type": "framework",
+            "autoload": {
+                "psr-4": {
+                    "Medoo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Angel Lai",
+                    "email": "angel@medoo.in"
+                }
+            ],
+            "description": "The lightweight PHP database framework to accelerate development",
+            "homepage": "https://medoo.in",
+            "keywords": [
+                "database",
+                "database library",
+                "lightweight",
+                "mariadb",
+                "mssql",
+                "mysql",
+                "oracle",
+                "php framework",
+                "postgresql",
+                "sql",
+                "sqlite"
+            ],
+            "support": {
+                "issues": "https://github.com/catfan/Medoo/issues",
+                "source": "https://github.com/catfan/Medoo"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/AngelaonLai",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/medoo",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2022-07-02T04:27:50+00:00"
+        },
+        {
+            "name": "gargron/fileupload",
+            "version": "v1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gargron/fileupload.git",
+                "reference": "fd2b79c9b868b9987925e098f5562231e691ce7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gargron/fileupload/zipball/fd2b79c9b868b9987925e098f5562231e691ce7d",
+                "reference": "fd2b79c9b868b9987925e098f5562231e691ce7d",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "FileUpload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "File uploading library capable of handling large/chunked/multiple file uploads",
+            "support": {
+                "issues": "https://github.com/Gargron/fileupload/issues",
+                "source": "https://github.com/Gargron/fileupload/tree/master"
+            },
+            "time": "2017-05-19T17:43:52+00:00"
+        },
+        {
+            "name": "rakit/validation",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rakit/validation.git",
+                "reference": "ff003a35cdf5030a5f2482299f4c93f344a35b29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rakit/validation/zipball/ff003a35cdf5030a5f2482299f4c93f344a35b29",
+                "reference": "ff003a35cdf5030a5f2482299f4c93f344a35b29",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rakit\\Validation\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhammad Syifa",
+                    "email": "emsifa@gmail.com"
+                }
+            ],
+            "description": "PHP Laravel like standalone validation library",
+            "support": {
+                "issues": "https://github.com/rakit/validation/issues",
+                "source": "https://github.com/rakit/validation/tree/v1.4.0"
+            },
+            "time": "2020-08-27T05:07:01+00:00"
+        },
+        {
+            "name": "siriusphp/upload",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/siriusphp/upload.git",
+                "reference": "3a5a1d130c91d505bb6d06f4c9e2428ea5c01214"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/siriusphp/upload/zipball/3a5a1d130c91d505bb6d06f4c9e2428ea5c01214",
+                "reference": "3a5a1d130c91d505bb6d06f4c9e2428ea5c01214",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "siriusphp/validation": "~3.0"
+            },
+            "require-dev": {
+                "laminas/laminas-diactoros": "^2.2",
+                "phpunit/phpunit": "~8.5",
+                "symfony/http-foundation": "^4.4"
+            },
+            "suggest": {
+                "knplabs/gaufrette": "Alternative filesystem abstraction library for upload destinations",
+                "league/flysystem": "To upload to different destinations, not just to the local file system"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sirius\\Upload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Miu",
+                    "email": "adrian@adrianmiu.ro"
+                }
+            ],
+            "description": "Framework agnostic upload library",
+            "keywords": [
+                "file",
+                "file upload",
+                "form",
+                "psr-7",
+                "security",
+                "upload",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/siriusphp/upload/issues",
+                "source": "https://github.com/siriusphp/upload/tree/3.0.1"
+            },
+            "time": "2020-03-14T15:02:29+00:00"
+        },
+        {
+            "name": "siriusphp/validation",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/siriusphp/validation.git",
+                "reference": "14dd292b10053d6269126f4cb6e334f78d4686c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/siriusphp/validation/zipball/14dd292b10053d6269126f4cb6e334f78d4686c4",
+                "reference": "14dd292b10053d6269126f4cb6e334f78d4686c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sirius\\Validation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Miu",
+                    "email": "adrian@adrianmiu.ro"
+                }
+            ],
+            "description": "Data validation library. Validate arrays, array objects, domain models etc using a simple API. Easily add your own validators on top of the already dozens built-in validation rules",
+            "keywords": [
+                "form",
+                "modeling",
+                "sanitization",
+                "security",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/siriusphp/validation/issues",
+                "source": "https://github.com/siriusphp/validation/tree/3.1.0"
+            },
+            "time": "2022-09-21T19:51:46+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

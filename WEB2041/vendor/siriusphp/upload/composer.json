@@ -1,0 +1,62 @@
+{
+    "name": "siriusphp/upload",
+    "description": "Framework agnostic upload library",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "form",
+        "upload",
+        "validation",
+        "file",
+        "file upload",
+        "security",
+        "psr-7"
+    ],
+    "authors": [
+        {
+            "name": "Adrian Miu",
+            "email": "adrian@adrianmiu.ro"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "siriusphp/validation": "~3.0"
+    },
+    "require-dev": {
+    	"phpunit/phpunit": "~8.5",
+        "laminas/laminas-diactoros": "^2.2",
+        "symfony/http-foundation": "^4.4"
+    },
+    "suggest": {
+    	"league/flysystem": "To upload to different destinations, not just to the local file system",
+    	"knplabs/gaufrette": "Alternative filesystem abstraction library for upload destinations"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sirius\\Upload\\": "src/"
+        }
+    },
+    "scripts": {
+        "cs": [
+            "php phpcs.phar --standard=PSR2 ./src"
+        ],
+        "md": [
+            "php phpmd.phar ./src xml phpmd.xml"
+        ],
+        "cbf": [
+            "php phpcbf.phar ./src --standard=PSR2 -w"
+        ],
+        "csfix": [
+            "php php-cs-fixer.phar fix ./src --rules=@PSR2"
+        ],
+        "build-docs": [
+            "php couscous.phar generate --target=build/docs/ ./docs"
+        ],
+        "docs": [
+            "cd docs && php ../couscous.phar preview"
+        ],
+        "test": [
+            "vendor/bin/phpunit -c phpunit.xml"
+        ]
+    }
+}

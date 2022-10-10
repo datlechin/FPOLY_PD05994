@@ -1,0 +1,9 @@
+{
+    "require": {
+        "gargron/fileupload": "^1.4",
+        "catfan/medoo": "^2.1",
+        "ausi/slug-generator": "^1.1",
+        "rakit/validation": "^1.4",
+        "siriusphp/upload": "^3.0"
+    }
+}
