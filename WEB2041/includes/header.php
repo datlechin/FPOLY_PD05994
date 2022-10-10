@@ -51,7 +51,7 @@
                                         <li><a href="wishlist.html">Yêu thích</a></li>
                                         <li><a href="cart.html">Giỏ hàng</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="login-register.html">Đăng nhập</a></li>
+                                        <li><a href="<?= site_url('/login.php') ?>">Đăng nhập</a></li>
                                     </ul>
                                 </li>
 

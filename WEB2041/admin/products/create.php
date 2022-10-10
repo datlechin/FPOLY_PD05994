@@ -6,6 +6,7 @@ require_once '../../bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $validation = $validator->make($_POST + $_FILES, [
+        'user_id' => 1,
         'category_id' => 'required',
         'name' => 'required',
         'price' => 'required',

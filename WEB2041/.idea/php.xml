@@ -9,17 +9,6 @@
   <component name="PHPCodeSnifferOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
-  <component name="PhpIncludePathManager">
-    <include_path>
-      <path value="$PROJECT_DIR$/vendor/siriusphp/validation" />
-      <path value="$PROJECT_DIR$/vendor/catfan/medoo" />
-      <path value="$PROJECT_DIR$/vendor/gargron/fileupload" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/rakit/validation" />
-      <path value="$PROJECT_DIR$/vendor/ausi/slug-generator" />
-      <path value="$PROJECT_DIR$/vendor/siriusphp/upload" />
-    </include_path>
-  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
